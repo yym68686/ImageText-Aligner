@@ -45,6 +45,9 @@ textarea, #translationDisplay {
     background-color: #f0f0f0;  /* 背景颜色，增加可读性 */
 }
 
+#imageCaption {
+    cursor: pointer;
+}
 
 pre {
     width: 80%; /* 设置文本框宽度为图片的80% */

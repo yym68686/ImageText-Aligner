@@ -55,6 +55,20 @@ app.get('/text/:textName', (req, res) => {
     res.sendFile(filePath);
 });
 
+// API to get specific file by image name
+app.get('/:imageName', (req, res) => {
+    const imageName = req.params.imageName;
+    const imageFilePath = path.join(imagesDir, imageName);
+    const textName = imageName.replace('.jpg', '.txt');
+    const textFilePath = path.join(textsDir, textName);
+
+    if (fs.existsSync(imageFilePath) && fs.existsSync(textFilePath)) {
+        res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    } else {
+        res.status(404).send('文件不存在');
+    }
+});
+
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });

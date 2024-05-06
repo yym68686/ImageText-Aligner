@@ -51,6 +51,7 @@ function displayContent(index) {
         const imageUrl = URL.createObjectURL(imageBlob);
         imageElement.src = imageUrl;
         captionElement.textContent = files[index].imageName;
+        window.history.pushState({ path: `/${files[index].imageName}` }, '', `/${files[index].imageName}`);
     });
 
     // 使用新的API路由获取文本
@@ -96,13 +97,33 @@ document.addEventListener('keydown', function(event) {
     }
 });
 
-
-// 初始化加载文件
-function loadFiles() {
+function loadFiles(imageName) {
     fetch('/files').then(response => response.json()).then(data => {
         files = data;
+        if (imageName) {
+            const index = files.findIndex(file => file.imageName === imageName);
+            if (index !== -1) {
+                currentIndex = index;
+            }
+        }
         displayContent(currentIndex);
     });
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    // 从 URL 中提取图片名称，支持查询参数或直接路径
+    let imageName;
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('image')) {
+        imageName = urlParams.get('image');
+    } else {
+        const path = window.location.pathname;
+        if (path.length > 1 && path.endsWith('.jpg')) {
+            imageName = path.substring(1); // 移除路径中的第一个斜杠
+        }
+    }
+
+    loadFiles(imageName);
+});
 
 loadFiles();
