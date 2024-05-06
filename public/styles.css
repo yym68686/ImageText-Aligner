@@ -1,0 +1,52 @@
+/* styles.css */
+#content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+}
+
+#imgcontent {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;  /* 垂直堆叠 */
+    align-items: center;
+    padding: 20px;
+    width: 50%;
+}
+
+#textcontent {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;  /* 垂直堆叠 */
+    padding: 20px;
+    gap: 20px;               /* 子元素之间的间隔 */
+}
+
+img {
+    width: auto;
+    height: 640px;
+}
+
+textarea, #translationDisplay {
+    width: 40%;
+    border: 1px solid #ccc;
+    padding: 10px;
+    min-height: 300px;      /* 设置最小高度，根据需要调整 */
+    /* height: 300px; */
+    overflow: auto;
+    font-size: medium;
+    white-space: pre-wrap;
+}
+
+#translationDisplay {
+    /* width: 40%; */
+    /* min-height: 100px; */
+    background-color: #f0f0f0;  /* 背景颜色，增加可读性 */
+}
+
+
+pre {
+    width: 80%; /* 设置文本框宽度为图片的80% */
+    margin-top: 20px;
+}
