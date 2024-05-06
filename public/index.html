@@ -3,6 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>图片和文本展示</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        #imageDisplay:hover {
+            transform: scale(1.2); /* 放大图片 */
+            overflow: hidden; /* 防止图片溢出 */
+            cursor: zoom-in; /* 更改鼠标光标为放大镜 */
+        }
+    </style>
+</head>
+<body>
+    <div id="content" class="flex justify-around items-center p-5">
+        <div id="imgcontent" class="flex flex-col items-center p-5 w-1/2">
+            <img id="imageDisplay" src="" alt="图片" class="w-full h-auto rounded-lg shadow-lg hover:shadow-2xl transition duration-300 ease-in-out">
+            <div id="imageCaption" class="cursor-pointer mt-2">图片标题将显示在这里</div>
+        </div>
+        <div id="textcontent" class="flex flex-col p-5 gap-5 w-1/2">
+            <textarea id="textDisplay" class="w-full border border-gray-300 p-2 min-h-[300px] overflow-auto text-medium whitespace-pre-wrap rounded-lg shadow-sm"></textarea>
+            <div id="translationDisplay" class="w-full bg-gray-100 p-2 min-h-[100px] overflow-auto rounded-lg shadow-sm">翻译结果将显示在这里</div>
+        </div>
+    </div>
+    <!-- 修改按钮的布局使其居中显示 -->
+    <div class="flex justify-center items-center space-x-4 my-4">
+        <button onclick="previous()" class="p-2 bg-blue-500 text-white rounded hover:bg-blue-700">上一张</button>
+        <button onclick="next()" class="p-2 bg-blue-500 text-white rounded hover:bg-blue-700">下一张</button>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片和文本展示</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -21,4 +56,4 @@
 
     <script src="app.js"></script>
 </body>
-</html>
+</html> -->
