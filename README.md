@@ -30,7 +30,7 @@ This project is a tool designed specifically for deep learning data cleaning, fa
    ```
 
 2. **Start the Translation Service**
-   Launch the translation service in a Docker container with the following command:
+   Launch the [translation service](https://github.com/yym68686/DeepLX.git) in a Docker container with the following command:
    ```bash
    docker run -dit -p 1188:1188 --name deeplx yym68686/deeplx:latest
    ```

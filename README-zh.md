@@ -28,7 +28,7 @@
    ```
 
 2. **启动翻译服务**
-   使用以下命令启动Docker容器中的翻译服务：
+   使用以下命令启动Docker容器中的[翻译服务](https://github.com/yym68686/DeepLX.git)：
    ```bash
    docker run -dit -p 1188:1188 --name deeplx yym68686/deeplx:latest
    ```
