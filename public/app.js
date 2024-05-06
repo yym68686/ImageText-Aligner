@@ -74,12 +74,23 @@ function next() {
     }
 }
 
+function copyToClipboard() {
+    const captionText = document.getElementById('imageCaption').innerText;
+    navigator.clipboard.writeText(captionText)
+        .then(() => {
+            alert('文本已复制到剪贴板！');
+        })
+        .catch(err => {
+            console.error('复制到剪贴板失败:', err);
+        });
+}
+
 document.addEventListener('keydown', function(event) {
     switch(event.key) {
-        case 'ArrowLeft':  // 左箭头键
+        case 'ArrowUp':  // 上箭头键
             previous();
             break;
-        case 'ArrowRight':  // 右箭头键
+        case 'ArrowDown':  // 下箭头键
             next();
             break;
     }
