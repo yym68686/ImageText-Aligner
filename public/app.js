@@ -125,5 +125,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
     loadFiles(imageName);
 });
-
-loadFiles();
