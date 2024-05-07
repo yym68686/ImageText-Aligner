@@ -1,11 +1,12 @@
+require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
 const express = require('express');
 const app = express();
 const PORT = 3000;
 
-const imagesDir = '/Users/yanyuming/Desktop/yym_9169-10227/JPEGImages_RGB';
-const textsDir = '/Users/yanyuming/Desktop/yym_9169-10227/description';
+const imagesDir = process.env.IMAGE_DIR || '/app/images';
+const textsDir = process.env.TEXT_DIR || '/app/texts';
 
 app.use(express.static('public'));
 app.use(express.text());

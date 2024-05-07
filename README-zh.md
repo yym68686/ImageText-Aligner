@@ -20,7 +20,59 @@
 - Node.js
 - Docker
 
-### 安装步骤
+### Docker 部署指南
+
+本部分提供了如何通过 Docker 来部署 `imagetext-aligner` 服务的详细步骤。您可以选择自行构建 Docker 镜像，或者直接从 Docker Hub 拉取预构建的镜像。
+
+#### 构建 Docker 镜像
+
+如果您希望从源代码构建 Docker 镜像，可以使用以下命令：
+
+```bash
+docker build --no-cache -t imagetext-aligner .
+```
+
+此命令将创建一个新的 Docker 镜像，标签为 `imagetext-aligner`，并确保每次构建都不使用缓存，这有助于获取最新的依赖。
+
+#### 运行 Docker 容器
+
+##### 使用本地构建的镜像
+
+运行以下命令以启动 `imagetext-aligner` 服务：
+
+```bash
+docker run --network="host" --name imagetext-aligner -dit \
+  -v /local/path/images:/app/images \
+  -v /local/path/texts:/app/texts \
+  imagetext-aligner:latest
+```
+
+此命令将使用主机网络配置启动一个名为 `imagetext-aligner` 的容器，并将本地目录挂载到容器内的指定位置，以便容器可以访问必要的数据。
+
+##### 使用 Docker Hub 的镜像
+
+如果您不希望自行构建镜像，可以直接从 Docker Hub 拉取预构建的镜像并运行：
+
+```bash
+docker run --network="host" --name imagetext-aligner -dit \
+  -v /local/path/images:/app/images \
+  -v /local/path/texts:/app/texts \
+  yym68686/imagetext-aligner:latest
+```
+
+#### 翻译服务
+
+如果您还需要翻译服务，可以通过以下命令运行翻译服务的 Docker 容器：
+
+```bash
+docker run -dit -p 1188:1188 --name deeplx yym68686/deeplx:latest
+```
+
+此命令将启动翻译服务，并将容器的 1188 端口映射到主机的同一端口上，以便外部访问。
+
+确保在执行这些命令之前，您已经安装了 Docker 并且 Docker 服务正在运行。如果您遇到任何问题，可以查阅 Docker 的官方文档或者寻求社区的帮助。
+
+### 本地安装步骤
 1. **克隆项目仓库**
    ```bash
    git clone https://github.com/yym68686/ImageText-Aligner.git

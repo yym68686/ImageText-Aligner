@@ -22,7 +22,59 @@ This project is a tool designed specifically for deep learning data cleaning, fa
 - Node.js
 - Docker
 
-### Setup Instructions
+### Docker Deployment Guide
+
+This section provides detailed steps on how to deploy the imagetext-aligner service using Docker. You can choose to build the Docker image yourself or pull a pre-built image directly from Docker Hub.
+
+### Building Docker Image
+
+If you wish to build the Docker image from source code, you can use the following command:
+
+```bash
+docker build --no-cache -t imagetext-aligner .
+```
+
+This command will create a new Docker image labeled as imagetext-aligner and ensures that no cache is used during the build, which helps in fetching the latest dependencies.
+
+### Running Docker Container
+
+#### Using Locally Built Image
+
+Run the following command to start the imagetext-aligner service:
+
+```bash
+docker run --network="host" --name imagetext-aligner -dit \
+  -v /local/path/images:/app/images \
+  -v /local/path/texts:/app/texts \
+  imagetext-aligner:latest
+```
+
+This command will start a container named imagetext-aligner using the host's network settings and mounts local directories to specified locations within the container, allowing the container to access necessary data.
+
+#### Using Image from Docker Hub
+
+If you prefer not to build the image yourself, you can directly pull a pre-built image from Docker Hub and run it:
+
+```bash
+docker run --network="host" --name imagetext-aligner -dit \
+  -v /local/path/images:/app/images \
+  -v /local/path/texts:/app/texts \
+  yym68686/imagetext-aligner:latest
+```
+
+### Translation Service
+
+If you also need a translation service, you can run a Docker container for the translation service using the following command:
+
+```bash
+docker run -dit -p 1188:1188 --name deeplx yym68686/deeplx:latest
+```
+
+This command will start the translation service and map the container's 1188 port to the same port on the host, allowing external access.
+
+Make sure you have Docker installed and the Docker service running before executing these commands. If you encounter any issues, refer to the official Docker documentation or seek help from the community.
+
+### Local Setup Instructions
 1. **Clone the Repository**
    ```bash
    git clone https://github.com/yym68686/ImageText-Aligner.git
