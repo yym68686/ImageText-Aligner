@@ -9,7 +9,7 @@
     <div id="content" class="flex justify-around items-center p-5">
         <div id="imgcontent" class="flex flex-col items-center p-5 w-1/2">
             <img id="imageDisplay" src="" alt="图片" class="w-full h-auto rounded-lg shadow-lg hover:shadow-2xl transition duration-300 ease-in-out">
-            <div id="imageCaption" class="cursor-pointer mt-2">图片标题将显示在这里</div>
+            <div id="imageCaption" class="cursor-pointer mt-2" onclick="copyToClipboard()">图片标题将显示在这里</div>
         </div>
         <div id="textcontent" class="flex flex-col p-5 gap-5 w-1/2">
             <textarea id="textDisplay" class="w-full border border-gray-300 p-2 min-h-[300px] overflow-auto text-medium whitespace-pre-wrap rounded-lg shadow-sm"></textarea>
